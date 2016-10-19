@@ -5,10 +5,80 @@
     <title>Hello React!</title>
     <script src="libs/react.js"></script>
     <script src="libs/react-dom.js"></script>
-    <script src="https://unpkg.com/babel-core@5.8.38/browser.min.js"></script>
+    <script src="libs/browser.min.js"></script>
+    <script src="https://unpkg.com/remarkable@1.7.1/dist/remarkable.min.js"></script>
+<!-- <script src="https://unpkg.com/react@15.3.2/dist/react.js"></script>
+    <script src="https://unpkg.com/react-dom@15.3.2/dist/react-dom.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+    <script src="https://unpkg.com/jquery@3.1.0/dist/jquery.min.js"></script>
+    <script src="https://unpkg.com/remarkable@1.7.1/dist/remarkable.min.js"></script> -->
   </head>
   <body>
     <div id="example"></div>
-    <script type="text/babel" src="custom.js"></script>
+    <script type="text/babel">
+        var CommentBox = React.createClass({
+          render: function() {
+            return (
+              <div className='commentBox'>
+                <h1>Comments</h1>
+                <CommentList data={this.props.data}/>
+                <CommentForm/>
+              </div>
+            );
+          }
+        });
+
+        var CommentList = React.createClass({
+          render: function() {
+            var commentNodes = this.props.data.map(comment => (<Comment author={comment.author} key={comment.id}>{comment.text}</Comment>));
+            return (
+              <div className='commentList'>
+                  {commentNodes}
+              </div>
+            );
+          }
+
+        });
+
+        var CommentForm = React.createClass({
+          render: function() {
+            return (
+              <div className='commentForm'>
+                Hello, I am a commentForm!
+              </div>
+            );
+
+          }
+
+        });
+
+        var data = [
+          {id: 1, author: "Pete Hunt", text: "This is one comment"},
+          {id: 2, author: "Jordan Walke", text: "This is *another* comment"}
+        ];
+
+        var Comment = React.createClass({
+          rawMarkup: function() {
+            var md = new Remarkable();
+            var rawMarkup = md.render(this.props.children.toString());
+            return {__html: rawMarkup};
+          },
+          render: function() {
+            
+            return(
+              <div className="comment">
+                <h2 className="author">{this.props.author}</h2>
+                <span dangerouslySetInnerHTML={this.rawMarkup()}></span>
+              </div>
+            )
+
+          }
+
+        });
+        ReactDOM.render(
+          <CommentBox data={data}/>,
+          document.getElementById("example")
+        );
+    </script>
   </body>
 </html>
