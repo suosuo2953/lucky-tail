@@ -1,11 +1,11 @@
 const path = require('path');
 
 const publicPath = __dirname + '/public';
-console.log('--------------' + publicPath + '--------------');
+
 module.exports = {
   entry: './src/client.js',
   output: {
-    path: publicPath,
+    path: path.resolve('dist'),
     filename: 'bundle.js'
   },
   module: {
