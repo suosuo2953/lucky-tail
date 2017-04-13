@@ -1,0 +1,27 @@
+body {
+  margin: 0;
+  position: relative;
+}
+#bg {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+}
+.main {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  position: absolute;
+}
+.plane {
+  background-color: white;
+}
+.plane, .bullet {
+  position: absolute;
+}
+.bullet {
+  width: 10px;
+}
+.bullet.opacity {
+  opacity: .5;
+}
