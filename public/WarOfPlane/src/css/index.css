@@ -1,0 +1,26 @@
+body {
+  margin: 0;
+  position: relative;
+}
+#bg {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+}
+.main {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  position: absolute;
+  background-image: url(../images/bg-1.jpg);
+}
+.absolute {
+  position: absolute;
+}
+.bullet {
+  width: 6px;
+  height: 14px;
+}
+.bullet.opacity {
+  opacity: .5;
+}
