@@ -1,21 +1,23 @@
 var webpack = require('webpack');
 var path = require('path');
 
-var BUILD_PATH = path.resolve(__dirname, 'src/client/public');
-var APP_DIR = path.resolve(__dirname, 'src/client/app');
-
 var config = {
-  entry: APP_DIR + '/index.js',
+  entry: './app/index.js',
   output: {
-    path: BUILD_PATH,
-    filename: 'bundle.js'
+    path: __dirname,
+    filename: 'bundle.js',
+    publicPath: '/app/assets/'
   },
   module: {
     loaders: [
       {
         test : /\.js?/,
-        include : APP_DIR,
-        loader : 'babel'
+        include : path.join(__dirname, 'app'),
+        exclude: '/node_modules/',
+        loader : 'babel-loader',
+        query: {
+          presets: ['es2015', 'react']
+        }
       }
     ]
   },
