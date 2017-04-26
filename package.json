@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "./node_modules/.bin/webpack -d --progress --colors"
+    "build": "./node_modules/.bin/webpack -d --progress --colors --config webpack/webpack.dev.config.js",
+    "start": "node app/app.js",
+    "clean": "rimraf dist"
   },
   "repository": {
     "type": "git",
@@ -27,6 +29,8 @@
     "express": "^4.15.2",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
+    "react-router": "^4.1.1",
+    "react-router-dom": "^4.1.1",
     "webpack": "^2.4.1"
   },
   "devDependencies": {

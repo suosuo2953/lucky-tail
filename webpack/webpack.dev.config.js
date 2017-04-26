@@ -2,9 +2,9 @@ var webpack = require('webpack');
 var path = require('path');
 
 var config = {
-  entry: './app/index.js',
+  entry: './app/client.js',
   output: {
-    path: __dirname,
+    path: path.join(__dirname, "../dist"),
     filename: 'bundle.js',
     publicPath: '/app/assets/'
   },
@@ -12,7 +12,6 @@ var config = {
     loaders: [
       {
         test : /\.js?/,
-        include : path.join(__dirname, 'app'),
         exclude: '/node_modules/',
         loader : 'babel-loader',
         query: {
