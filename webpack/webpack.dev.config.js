@@ -3,25 +3,31 @@ var path = require('path');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 var config = {
+  devtool: 'source-map',
   entry: './app/client.js',
   output: {
     path: path.join(__dirname, "../dist"),
     filename: 'bundle.js',
-    publicPath: '/app/assets/'
+    publicPath: './'
   },
   module: {
     loaders: [
       {
-        test : /\.js?/,
+        test: /\.(js|jsx)$/,
         exclude: '/node_modules/',
-        loader : 'babel-loader',
+        loader: 'babel-loader',
         query: {
-          presets: ['es2015', 'react']
+          // stage-0 arrow function 相关
+          presets: ['es2015', 'stage-0', 'react']
         }
       },
       {
-        test : /\.scss$/,
-        loaders : ['style-loader', 'css-loader', 'sass-loader']
+        test: /\.scss$/,
+        loaders: ['style-loader', 'css-loader', 'sass-loader']
+      },
+      {
+        test: /\.(jpg|png|gif|svg)$/i,
+        loader: "file-loader?name=[name].[ext]"
       }
     ],
     // rules: [

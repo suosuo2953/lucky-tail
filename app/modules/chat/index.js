@@ -6,8 +6,13 @@ import './index.scss';
 export class Chat extends Component {
 
   render () {
+    const avatar = require("./images/avatar.jpg");
     return (
-      <AppBar title="Welcome" iconClassNameRight="muidocs-icon-navigation-expand-more"></AppBar>
+      <div>
+        <AppBar title="title"
+          iconElementRight={<Avatar src={avatar} />}></AppBar>
+      </div>
     );
   }
+
 }

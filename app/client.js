@@ -3,7 +3,9 @@ import { Chat } from './modules/Chat';
 import React from 'react';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import ReactDOM from 'react-dom';
+import injectTapEventPlugin from 'react-tap-event-plugin';
 
+injectTapEventPlugin();
 ReactDOM.render(
   (<Router>
     <MuiThemeProvider>

@@ -1,6 +1,6 @@
 const path = require('path')
 const express = require('express')
-const port = (process.env.PORT || 8080);
+const port = (process.env.PORT || 80);
 const http = require('http');
 
 const app = express();
@@ -13,10 +13,7 @@ if (process.env.NODE_ENV !== 'prodcution') {
   const compiler = webpack(config);
 
   app.use(webpackHotMiddleware(compiler));
-  app.use(webpackDevMiddleware(compiler, {
-    noInfo: true,
-    publicPath: config.output.publicPathdist
-  }));
+  app.use(webpackDevMiddleware(compiler, {}));
 }
 
 const indexPath = path.join(__dirname, 'index.html');
