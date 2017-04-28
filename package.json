@@ -9,7 +9,7 @@
     "start-app": "node app/app.js",
     "clean": "rimraf dist",
     "stats": "./node_modules/.bin/webpack --profile --json > stats.json --config webpack/webpack.dev.config.js",
-    "start": "./node_modules/.bin/webpack-dev-server --config webpack/webpack.dev.config.js"
+    "start-dev-server": "./node_modules/.bin/webpack-dev-server --config webpack/webpack.dev.config.js"
   },
   "repository": {
     "type": "git",
