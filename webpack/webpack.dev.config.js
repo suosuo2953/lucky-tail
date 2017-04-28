@@ -41,11 +41,28 @@ var config = {
     // ],
   },
 
-  // plugins: [
-  //   new ExtractTextPlugin({
-  //     filename: 'style.css',
-  //   }),
-  // ]
+  plugins: [
+    new webpack.optimize.CommonsChunkPlugin({
+      name: 'vendor',
+      filename: 'framework.js',
+      minChunks: (module) => (
+        module.resource &&
+        module.resource.indexOf('node_modules') !== -1 &&
+        module.resource.indexOf('.css') === -1
+      ),
+    }),
+    // new webpack.optimize.UglifyJsPlugin({
+    //   compress: { warnings: false }
+    // })
+    // new ExtractTextPlugin({
+    //   filename: 'style.css',
+    // }),
+  ]
+  // devServer: {
+  //   contentBase: path.join(__dirname, "../app"),
+  //   compress: true,
+  //   port: 8080,
+  // }
 };
 
 module.exports = config;
