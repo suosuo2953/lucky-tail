@@ -18,7 +18,8 @@ var config = {
         loader: 'babel-loader',
         query: {
           // stage-0 arrow function 相关
-          presets: ['es2015', 'stage-0', 'react']
+          presets: ['es2015', 'stage-0', 'react'],
+          plugins: ['transform-decorators-legacy' ],
         }
       },
       {
